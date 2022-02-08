@@ -13,6 +13,7 @@ public class SinglyLinkedList implements LinkedList<Integer> {
 
         public ListNode(Integer value) {
             this.value = value;
+            this.next = null;
         }
     }
 
@@ -37,7 +38,7 @@ public class SinglyLinkedList implements LinkedList<Integer> {
         } else {
             ListNode currentElement = this.head;
             while (currentElement.next != null) {
-                currentElement = currentElement.next;
+                currentElement = currentElement.next; // finding the last element
             }
             currentElement.next = lastElement;
         }
@@ -49,25 +50,46 @@ public class SinglyLinkedList implements LinkedList<Integer> {
     public Integer removeFirst() {
         checkIfEmpty();
         Integer value = this.head.value;
-        this.head = null;
+        this.head = this.head.next;
         this.size--;
         return value;
-
     }
 
     @Override
     public Integer removeLast() {
-        return null;
+        checkIfEmpty();
+        if (this.size == 1) {
+            Integer value = this.head.value;
+            this.head = null;
+            this.size--;
+            return value;
+        } else {
+            ListNode lastElement = this.head;
+            ListNode previousToLast = this.head;
+            while (lastElement.next != null) {
+                previousToLast = lastElement;   //finding the last Element
+                lastElement = lastElement.next;
+            }
+            previousToLast.next = null;
+            this.size--;
+            return lastElement.value;
+        }
     }
 
     @Override
     public Integer getFirst() {
-        return null;
+        checkIfEmpty();
+        return this.head.value;
     }
 
     @Override
     public Integer getLast() {
-        return null;
+        checkIfEmpty();
+        ListNode lastElement = this.head;
+        while (lastElement.next != null) {
+            lastElement = lastElement.next;
+        }
+        return lastElement.value;
     }
 
     @Override
