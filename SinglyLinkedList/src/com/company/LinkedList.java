@@ -1,6 +1,6 @@
 package com.company;
 
-public interface LinkedList<Integer> extends Iterable<Integer> {
+public interface LinkedList<Integer> /*extends Iterable<Integer>*/ {
     void addFirst(Integer element);
 
     void addLast(Integer element);
@@ -12,6 +12,8 @@ public interface LinkedList<Integer> extends Iterable<Integer> {
     Integer getFirst();
 
     Integer getLast();
+
+    Integer getElementAtIndex(String m);
 
     int size();
 
