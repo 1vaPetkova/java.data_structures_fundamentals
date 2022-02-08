@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter integers:");
+        System.out.println("Enter integers separated by one or more spaces:");
         int[] ints = parseInput(reader.readLine());
 
         SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
