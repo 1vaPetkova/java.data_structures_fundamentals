@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Arrays;
-
 public class SinglyLinkedList implements LinkedList<Integer> {
     private ListNode head;
     private int size;
@@ -16,21 +14,9 @@ public class SinglyLinkedList implements LinkedList<Integer> {
         }
     }
 
-    public SinglyLinkedList(String input) {
+    public SinglyLinkedList() {
         this.head = null;
         this.size = 0;
-        this.createListOfIntegers(input);
-    }
-
-    private void createListOfIntegers(String input) {
-        String[] numbers = input.split("\\s+");
-        checkIfIntegers(numbers);
-        int[] values = Arrays.stream(numbers)
-                .mapToInt(Integer::parseInt)
-                .toArray();
-        for (int value : values) {
-            addLast(value);
-        }
     }
 
 
@@ -104,12 +90,11 @@ public class SinglyLinkedList implements LinkedList<Integer> {
     }
 
     @Override
-    public Integer getElementAtIndex(String mString) {
-        checkIfNumberIsAnInteger(mString);
-        int m = Integer.parseInt(mString);
-        checkIfOutOfBounds(m);
+    public Integer getElementAtIndex(int index) {
+        checkIfOutOfBounds(index);
+
         ListNode element = this.head;
-        for (int i = 0; i < this.size - 1 - m; i++) {
+        for (int i = 0; i < index; i++) {
             element = element.next;
         }
         return element.value;
@@ -125,50 +110,15 @@ public class SinglyLinkedList implements LinkedList<Integer> {
         return this.size == 0;
     }
 
-//    @Override
-//    public Iterator<Integer> iterator() {
-//        return new Iterator<Integer>() {
-//            private ListNode current = head;
-//
-//            @Override
-//            public boolean hasNext() {
-//                return current.next != null;
-//            }
-//
-//            @Override
-//            public Integer next() {
-//                Integer value = current.value;
-//                current = current.next;
-//                return value;
-//            }
-//        };
-//    }
-
-
-    private void checkIfOutOfBounds(int m) {
-        if (m < 0 || m >= this.size) {
-            throw new IllegalArgumentException("The value of M is out of the singly linked list bounds!");
+    private void checkIfOutOfBounds(int index) {
+        if (index < 0 || index >= this.size) {
+            throw new IllegalArgumentException(String.format("The value of M must be within [0, %d)!", this.size));
         }
     }
 
     private void checkIfEmpty() {
         if (isEmpty()) {
             throw new IllegalStateException("The list is empty!");
-        }
-    }
-
-    private void checkIfIntegers(String[] numbers) {
-        for (String number : numbers) {
-            checkIfNumberIsAnInteger(number);
-        }
-    }
-
-    private void checkIfNumberIsAnInteger(String number) {
-        char[] chars = number.toCharArray();
-        for (char ch : chars) {
-            if (!Character.isDigit(ch)) {
-                throw new IllegalArgumentException("Please enter valid digits!");
-            }
         }
     }
 

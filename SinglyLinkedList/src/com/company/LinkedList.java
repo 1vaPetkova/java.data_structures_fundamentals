@@ -1,19 +1,19 @@
 package com.company;
 
-public interface LinkedList<Integer> /*extends Iterable<Integer>*/ {
-    void addFirst(Integer element);
+public interface LinkedList<E> {
+    void addFirst(E element);
 
-    void addLast(Integer element);
+    void addLast(E element);
 
-    Integer removeFirst();
+    E removeFirst();
 
-    Integer removeLast();
+    E removeLast();
 
-    Integer getFirst();
+    E getFirst();
 
-    Integer getLast();
+    E getLast();
 
-    Integer getElementAtIndex(String m);
+    E getElementAtIndex(int m);
 
     int size();
 
