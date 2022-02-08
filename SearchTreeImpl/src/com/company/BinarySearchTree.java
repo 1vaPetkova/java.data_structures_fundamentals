@@ -15,7 +15,7 @@ public class BinarySearchTree {
         binarySearchTree.printTreeBFS();
     }
 
-    private class Node {
+    private static class Node {
         int value;
         Node leftChild;
         Node rightChild;
