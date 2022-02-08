@@ -20,7 +20,7 @@ public class Main {
         try {
             int index = singlyLinkedList.size() - 1 - m;
             Integer valueOfTheMthElement = singlyLinkedList.getElementAtIndex(index);
-            System.out.println(valueOfTheMthElement);
+            System.out.printf("The Mth element is %d\n", valueOfTheMthElement);
         } catch (IllegalArgumentException e) {
             System.out.printf("Error: %s\n", e.getMessage());
         }
